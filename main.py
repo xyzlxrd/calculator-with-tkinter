@@ -6,8 +6,6 @@ janela = Tk()
 janela.title("Calculadora")
 janela.config(bg='#545454')
 
-#ESTILOS----------------------------------------------------------------------------------
-
 ttk.Style().configure('cor_azul.TButton', background='lightblue', relief='flat')
 
 #DISPLAY----------------------------------------------------------------------------------
@@ -17,7 +15,6 @@ numero_da_tela.set('')
 display = Label(janela,bg='black',fg='white' , textvariable=numero_da_tela, font=('Arial', 24), width=21, anchor='e')
 display.grid(column=0, row=0, columnspan=4, ipady=20)
 
-#FUNÇÃO PRA MOSTRAR NA TELA---------------------------------------------------------------
 def adicionar_numero(num):
     valor_atual = numero_da_tela.get()
     numero_da_tela.set(valor_atual + str(num))
@@ -32,29 +29,25 @@ def calcular():
 def limpar_display():
     numero_da_tela.set('')
 
-#BOTOES LINHA 1---------------------------------------------------------------------------
+#BOTOES
 botoes_linha1 = Button(janela, text='C', bg='#ff6666', fg='white', width=53, command=limpar_display)
 botoes_linha1.grid(row=1, column=0, columnspan=4, padx=1, pady=1, ipadx=10, ipady=30)
 
-#BOTOES LINHA 2---------------------------------------------------------------------------
 lista_botoes_linha2 = ['7','8','9','*']
 for i, texto in enumerate(lista_botoes_linha2):
     botoes_linha2 = ttk.Button(janela, text=(texto), command=lambda t=texto: adicionar_numero(t))
     botoes_linha2.grid(row=2, column=i, padx=1, pady=1, ipadx=10, ipady=30)
 
-#BOTOES LINHA 3---------------------------------------------------------------------------
 lista_botoes_linha3 = ['4','5','6','+']
 for i, texto in enumerate(lista_botoes_linha3):
     botoes_linha3 = ttk.Button(janela, text=(texto), command=lambda t=texto: adicionar_numero(t))
     botoes_linha3.grid(row=3, column=i, padx=1, pady=1, ipadx=10, ipady=30)
 
-#BOTOES LINHA 4---------------------------------------------------------------------------
 lista_botoes_linha4 = ['1','2','3','-']
 for i, texto in enumerate(lista_botoes_linha4):
     botoes_linha4 = ttk.Button(janela, text=(texto), command=lambda t=texto: adicionar_numero(t))
     botoes_linha4.grid(row=4, column=i, padx=1, pady=1, ipadx=10, ipady=30)
 
-#BOTOES LINHA 5---------------------------------------------------------------------------
 lista_botoes_linha5 = [',','0','/','=']
 for i, texto in enumerate(lista_botoes_linha5):
     calculo = calcular if texto == '=' else lambda t=texto: adicionar_numero(t)
